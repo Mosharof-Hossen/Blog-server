@@ -14,4 +14,6 @@ const blogModelSchema = new Schema<TBlog>({
     timestamps: true
 })
 
+
+
 export const Blog = model<TBlog>("Blog", blogModelSchema)
