@@ -20,6 +20,15 @@ class QueryBuilder<T> {
         }
         return this
     }
+
+    filter() {
+
+        if (this?.query?.filter) {
+            console.log(this?.query?.filter);
+            this.modelQuery = this.modelQuery.find({ author: this?.query?.filter })
+        }
+        return this;
+    }
 }
 
 export default QueryBuilder;

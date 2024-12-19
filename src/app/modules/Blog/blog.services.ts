@@ -16,7 +16,8 @@ const getAllBlogFromDB = async (query: Record<string, unknown>) => {
         Blog.find().populate("author"),
         query
     )
-        .search(searchAbleFields);
+        .search(searchAbleFields)
+        .filter()
 
     const result = await blogQuery.modelQuery;
     return result;
