@@ -11,7 +11,7 @@ app.use(cors({
 }));
 
 // application Route
-app.use("/api/v1", router)
+app.use("/api", router)
 
 // test
 app.get("/", async (req, res) => {
