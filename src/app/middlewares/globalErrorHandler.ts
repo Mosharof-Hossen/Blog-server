@@ -11,7 +11,7 @@ const globalErrorHandler = (
     let statusCode = 400
     // console.log(err);
 
-    res.status(statusCode).send({
+    res.status(statusCode).json({
         success: false,
         message: message,
         statusCode: 400,
