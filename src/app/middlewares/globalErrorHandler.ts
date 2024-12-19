@@ -7,7 +7,7 @@ const globalErrorHandler = (
     res: Response,
     next: NextFunction
 ) => {
-    let message = "Something went wrong.."
+    let message = err.message ||  "Something went wrong.." 
     let statusCode = 400
     // console.log(err);
 
