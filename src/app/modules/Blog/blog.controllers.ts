@@ -7,7 +7,7 @@ const createBlog = catchAsync(async (req, res) => {
 
     sendResponse(res, {
         success: true,
-        message:  "Blog created successfully",
+        message: "Blog created successfully",
         statusCode: 201,
         data: {
             "_id": result._id,
@@ -18,6 +18,19 @@ const createBlog = catchAsync(async (req, res) => {
     })
 })
 
+
+const getAllBlogs = catchAsync(async (req, res) => {
+    const result = await BlogServices.getAllBlogFromDB(req.query);
+
+    sendResponse(res, {
+        success: true,
+        message: "Blogs fetched successfully",
+        statusCode: 200,
+        data: result
+    })
+})
+
 export const blogController = {
-    createBlog
+    createBlog,
+    getAllBlogs
 }
