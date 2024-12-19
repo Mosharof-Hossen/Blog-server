@@ -1,6 +1,7 @@
 import express from "express";
 import cors from 'cors';
 import router from "./router";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 
 const app = express();
 
@@ -17,5 +18,7 @@ app.use("/api", router)
 app.get("/", async (req, res) => {
     res.send("Home page")
 })
+
+app.use(globalErrorHandler);
 
 export default app;
