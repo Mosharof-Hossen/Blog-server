@@ -7,6 +7,11 @@ const createBlogIntoDB = async (payload: TBlog) => {
     const result = (await Blog.create(payload)).populate("author");
     return result;
 }
+const updateBlogIntoDB = async (id: string, payload: Partial<TBlog>) => {
+    console.log({payload});
+    const result = await Blog.findByIdAndUpdate(id, payload, { new: true }).populate("author");
+    return result;
+}
 
 
 const getAllBlogFromDB = async (query: Record<string, unknown>) => {
@@ -26,5 +31,6 @@ const getAllBlogFromDB = async (query: Record<string, unknown>) => {
 
 export const BlogServices = {
     createBlogIntoDB,
-    getAllBlogFromDB
+    getAllBlogFromDB,
+    updateBlogIntoDB
 }

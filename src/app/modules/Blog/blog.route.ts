@@ -10,8 +10,15 @@ const router = Router();
 router.post(
     "/",
     auth(ROLES.user),
-    dataValidator(BlogValidation.blogValidationSchema),
+    dataValidator(BlogValidation.createBlogValidationSchema),
     blogController.createBlog);
+router.patch(
+    "/:id",
+    auth(ROLES.user),
+    dataValidator(BlogValidation.updateBlogValidationSchema),
+    blogController.updateBlog);
+
+
 router.get("/", blogController.getAllBlogs);
 
 

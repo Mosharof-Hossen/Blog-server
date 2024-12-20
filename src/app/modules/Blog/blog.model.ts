@@ -2,8 +2,8 @@ import { model, Schema } from "mongoose";
 import { TBlog } from "./blog.interface";
 
 const blogModelSchema = new Schema<TBlog>({
-    title: { type: String, required: true },
-    content: { type: String, required: true },
+    title: { type: String, required: true, trim: true },
+    content: { type: String, required: true, trim: true },
     author: {
         type: Schema.Types.ObjectId,
         required: true,
