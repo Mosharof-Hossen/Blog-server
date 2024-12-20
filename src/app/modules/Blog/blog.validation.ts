@@ -8,4 +8,6 @@ const blogValidationSchema = z.object({
     })
 });
 
-export default blogValidationSchema;
+export const BlogValidation = {
+    blogValidationSchema
+};
