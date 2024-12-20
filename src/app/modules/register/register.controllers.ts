@@ -1,6 +1,6 @@
 import catchAsync from "../../utils/catchAsync"
 import sendResponse from "../../utils/sendResponse";
-import { UserServices } from "./user.services"
+import { UserServices } from "./register.services"
 
 const registerUser = catchAsync(async (req, res) => {
     const result = await UserServices.registerUserIntoDB(req.body);

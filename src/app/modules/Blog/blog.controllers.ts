@@ -1,7 +1,7 @@
 import AppError from "../../errors/AppError";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
-import { User } from "../user/user.model";
+import { User } from "../register/register.model";
 import { Blog } from "./blog.model";
 import { BlogServices } from "./blog.services";
 

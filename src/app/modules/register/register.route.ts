@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { UserControllers } from "./user.controllers";
+import { UserControllers } from "./register.controllers";
 import dataValidator from "../../middlewares/dataValidator";
-import { UserValidation } from "./user.validation";
+import { UserValidation } from "./register.validation";
 
 const router = Router();
 
@@ -12,4 +12,4 @@ router.post(
 );
 
 
-export const UserRouter = router;
+export const RegisterRouter = router;

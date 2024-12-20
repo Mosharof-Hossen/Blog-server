@@ -1,6 +1,6 @@
 import { compare } from "bcrypt";
 import AppError from "../../errors/AppError";
-import { User } from "../user/user.model";
+import { User } from "../register/register.model";
 import { TLogin } from "./auth.interface"
 import jwt from 'jsonwebtoken'
 import config from "../../../config";
@@ -8,7 +8,7 @@ import config from "../../../config";
 const loginUser = async (payload: TLogin) => {
     const user = await User.isUserExistByEmail(payload.email);
     if (!user) {
-        throw new AppError(400, "Invalid user.");
+        throw new AppError(400, "Invalid Email or Password.");
     }
     if (user.isBlocked) {
         throw new AppError(400, "You are Blocked");

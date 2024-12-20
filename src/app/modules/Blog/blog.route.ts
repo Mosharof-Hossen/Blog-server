@@ -12,11 +12,13 @@ router.post(
     auth(ROLES.user),
     dataValidator(BlogValidation.createBlogValidationSchema),
     blogController.createBlog);
+
 router.patch(
     "/:id",
     auth(ROLES.user),
     dataValidator(BlogValidation.updateBlogValidationSchema),
     blogController.updateBlog);
+    
 router.delete(
     "/:id",
     auth(ROLES.user),
