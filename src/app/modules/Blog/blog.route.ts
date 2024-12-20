@@ -10,7 +10,7 @@ const router = Router();
 router.post(
     "/",
     auth(ROLES.user),
-    dataValidator(BlogValidation.createBlogValidationSchema),
+    // dataValidator(BlogValidation.createBlogValidationSchema),
     blogController.createBlog);
 
 router.patch(
