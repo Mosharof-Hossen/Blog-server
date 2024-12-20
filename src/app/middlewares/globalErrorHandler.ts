@@ -5,6 +5,9 @@ import { TErrorSource } from "../interface/error";
 import { ZodError } from "zod";
 import handleZodError from "../errors/handleZodError";
 import handleValidationError from "../errors/handleValidationError";
+import handleCastError from "../errors/handleCastError";
+import handleDuplicateError from "../errors/handleDuplicateError";
+import AppError from "../errors/AppError";
 
 const globalErrorHandler = (
     err: any,
@@ -29,11 +32,32 @@ const globalErrorHandler = (
         message = simplifiedError?.message;
         statusCode = simplifiedError.statusCode;
     }
-    else if(err?.name === "ValidationError"){
+    else if (err?.name === "ValidationError") {
         const simplifiedError = handleValidationError(err);
         errorSource = simplifiedError?.errorSource;
         message = simplifiedError?.message;
         statusCode = simplifiedError.statusCode;
+    }
+    else if (err?.name === "CastError") {
+        const simplifiedError = handleCastError(err);
+        errorSource = simplifiedError?.errorSource;
+        message = simplifiedError?.message;
+        statusCode = simplifiedError.statusCode;
+    }
+    else if (err?.errorResponse?.code === 11000) {
+        const simplifiedError = handleDuplicateError(err);
+        errorSource = simplifiedError?.errorSource;
+        message = simplifiedError?.message;
+        statusCode = simplifiedError.statusCode;
+    }
+    else if (err instanceof AppError) {
+        errorSource = [
+            {
+                path: "",
+                message: err?.message
+            }
+        ];
+        statusCode = err?.statusCode;
     }
 
     res.status(statusCode).json({
