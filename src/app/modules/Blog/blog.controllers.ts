@@ -53,6 +53,26 @@ const updateBlog = catchAsync(async (req, res) => {
     })
 })
 
+const deleteBlog = catchAsync(async (req, res) => {
+    const user = await User.isUserExistByEmail(req.user.userEmail);
+
+    if (!user) {
+        throw new AppError(401, "Invalid User!");
+    }
+    const blog = await Blog.findById(req.params.id).populate("author");
+
+    if (blog?.author?.email != user?.email) {
+        throw new AppError(401, "Invalid User!");
+    }
+    await BlogServices.deleteBlogFromDB(req.params.id);
+
+    res.status(200).json({
+        "success": true,
+        "message": "Blog deleted successfully",
+        "statusCode": 200
+    })
+})
+
 
 const getAllBlogs = catchAsync(async (req, res) => {
     const result = await BlogServices.getAllBlogFromDB(req.query);
@@ -68,5 +88,6 @@ const getAllBlogs = catchAsync(async (req, res) => {
 export const blogController = {
     createBlog,
     getAllBlogs,
-    updateBlog
+    updateBlog,
+    deleteBlog
 }

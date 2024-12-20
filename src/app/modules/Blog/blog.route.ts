@@ -17,6 +17,10 @@ router.patch(
     auth(ROLES.user),
     dataValidator(BlogValidation.updateBlogValidationSchema),
     blogController.updateBlog);
+router.delete(
+    "/:id",
+    auth(ROLES.user),
+    blogController.deleteBlog);
 
 
 router.get("/", blogController.getAllBlogs);
