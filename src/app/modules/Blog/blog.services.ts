@@ -19,7 +19,6 @@ const updateBlogIntoDB = async (id: string, payload: Partial<TBlog>) => {
 
 
 const getAllBlogFromDB = async (query: Record<string, unknown>) => {
-    console.log(query);
 
     const blogQuery = new QueryBuilder(
         Blog.find().populate("author"),

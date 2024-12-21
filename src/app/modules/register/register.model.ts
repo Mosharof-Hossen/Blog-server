@@ -21,8 +21,7 @@ const userModelSchema = new Schema<TUser, UserModel>({
 })
 
 userModelSchema.pre('save', async function (next) {
-    const user = this;
-    user.password = await hash(user.password, Number(config.salt_round));
+    this.password = await hash(this.password, Number(config.salt_round));
     next()
 })
 userModelSchema.post('save', async function (doc, next) {

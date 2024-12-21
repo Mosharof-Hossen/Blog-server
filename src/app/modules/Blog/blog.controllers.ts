@@ -6,7 +6,7 @@ import { Blog } from "./blog.model";
 import { BlogServices } from "./blog.services";
 
 const createBlog = catchAsync(async (req, res) => {
-    const user = await User.isUserExistByEmail(req.user.userEmail);
+    const user = await User.findOne({ email: req.user.userEmail }).select("+password");
     if (!user) {
         throw new AppError(401, "Invalid credentials",);
     }
@@ -33,9 +33,14 @@ const updateBlog = catchAsync(async (req, res) => {
     if (!user) {
         throw new AppError(401, "Invalid credentials");
     }
-    const blog = await Blog.findById(req.params.id).populate("author");
 
-    if (blog?.author?.email != user?.email) {
+    const blog = await Blog.findById(req.params.id)
+    if (!blog) {
+        throw new AppError(401, "Blog can not find");
+    }
+
+    const author = await User.findById(blog.author);
+    if (author?.email != user?.email) {
         throw new AppError(401, "You are not authorized.");
     }
     const result = await BlogServices.updateBlogIntoDB(req.params.id, req.body);
@@ -59,11 +64,17 @@ const deleteBlog = catchAsync(async (req, res) => {
     if (!user) {
         throw new AppError(401, "Invalid credentials");
     }
-    const blog = await Blog.findById(req.params.id).populate("author");
 
-    if (blog?.author?.email != user?.email) {
-        throw new AppError(401, "Invalid credentials");
+    const blog = await Blog.findById(req.params.id)
+    if (!blog) {
+        throw new AppError(401, "Blog can not find");
     }
+
+    const author = await User.findById(blog.author);
+    if (author?.email != user?.email) {
+        throw new AppError(401, "You are not authorized.");
+    }
+
     await BlogServices.deleteBlogFromDB(req.params.id);
 
     res.status(200).json({

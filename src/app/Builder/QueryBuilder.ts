@@ -29,7 +29,6 @@ class QueryBuilder<T> {
         return this;
     }
     sort() {
-        console.log(this.query);
         let sortBy = this?.query?.sortBy || "createdAt";
         if(this.query.sortOrder && this.query.sortOrder == 'desc'){
             sortBy = "-" + sortBy;

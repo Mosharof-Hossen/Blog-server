@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TErrorSource, TReturnErrorResponse } from "../interface/error";
 
-const handleDuplicateError = (err): TReturnErrorResponse => {
+const handleDuplicateError = (err:any): TReturnErrorResponse => {
     const errorSource: TErrorSource = [
         {
             path: "",
