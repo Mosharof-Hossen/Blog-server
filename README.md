@@ -67,8 +67,8 @@ The goal of this Blogify-server is to develop a backend for a blogging platform 
 
 ### 1\. Authentication
 
-#### 1.1 Register User: **POST** `/api/auth/register`
-#### 1.2 Login User: **POST** `/api/auth/login`
+    #### 1.1 Register User: **POST** `/api/auth/register`
+    #### 1.2 Login User: **POST** `/api/auth/login`
 
 ### 2\. Blog Management (only when logged in)
 **Request Header:**`Authorization: Bearer <token>`
