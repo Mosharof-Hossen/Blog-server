@@ -124,7 +124,7 @@ npm install
 ```
 Step 3: Set Up Environment Variables
 ``` javascript
-MONGO_URI=mongodb://......./bikes-tore
+MONGO_URI=mongodb://......./blog
 PORT=2000
 NODE_ENV = development
 SALT_ROUND = ____
