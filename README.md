@@ -67,22 +67,22 @@ The goal of this Blogify-server is to develop a backend for a blogging platform 
 
 ### 1\. Authentication
 
-   1.1 Register User: **POST** `/api/auth/register`
-   1.2 Login User: **POST** `/api/auth/login`
+- 1.1. Register User: **POST** `/api/auth/register`
+- 1.2 Login User: **POST** `/api/auth/login`
 
 ### 2\. Blog Management (only when logged in)
 **Request Header:**`Authorization: Bearer <token>`
 
-   2.1 Create Blog: **POST** `/api/blogs`
-   2.2 Update Blog: **PATCH** `/api/blogs/:id`
-   2.3 Delete Blog: **DELETE** `/api/blogs/:id`
-   2.4 Get All Blogs (Public): **GET** `/api/blogs`
+- 2.1 Create Blog: **POST** `/api/blogs`
+- 2.2 Update Blog: **PATCH** `/api/blogs/:id`
+- 2.3 Delete Blog: **DELETE** `/api/blogs/:id`
+- 2.4 Get All Blogs (Public): **GET** `/api/blogs`
 
 ### 3\. Admin Actions (only when logged in)
 **Request Header:**`Authorization: Bearer <token>`
 
-  3.1 Block User: **PATCH** `/api/admin/users/:userId/block`
-  3.2 Delete Blog: **DELETE** `/api/admin/blogs/:id`
+- 3.1 Block User: **PATCH** `/api/admin/users/:userId/block`
+- 3.2 Delete Blog: **DELETE** `/api/admin/blogs/:id`
 
 ## Error Handling
 *   **Zod Validation Error** (`ZOD_ERROR`)
