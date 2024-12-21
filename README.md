@@ -108,4 +108,32 @@ The goal of this Blogify-server is to develop a backend for a blogging platform 
   "stack": "error stack trace, if available"
 }
 ```
+## **Project setup guideline**
+
+Step 1: Clone the Repository
+``` git
+git clone https://github.com/Mosharof-Hossen/Blogify-server.git
+cd Blogify-server
+```
+Step 2: Install Dependencies
+``` javascript
+npm install
+```
+Step 3: Set Up Environment Variables
+``` javascript
+MONGO_URI=mongodb://......./bikes-tore
+PORT=2000
+```
+Step 4: Compile TypeScript Code
+```javascript
+npm run build
+```
+Step 5: Start the Server
+```javascript
+npm run start:dev
+```
+
+Author <br>
+Mosharof Hossen <br>
+[GitHub Profile](https://github.com/Mosharof-Hossen)
 
