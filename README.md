@@ -123,6 +123,9 @@ Step 3: Set Up Environment Variables
 ``` javascript
 MONGO_URI=mongodb://......./bikes-tore
 PORT=2000
+NODE_ENV = development
+SALT_ROUND = ____
+JWT_ACCESS_SECRET = _____
 ```
 Step 4: Compile TypeScript Code
 ```javascript
