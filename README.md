@@ -62,6 +62,11 @@ The goal of this Blogify-server is to develop a backend for a blogging platform 
 ##   
 
 ## API Endpoints
+Admin Email and Password:
+{
+    "email": "admin@gmail.com",
+    "password": "admin"
+}
 
 ### 1\. Authentication
 
