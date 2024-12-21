@@ -15,7 +15,7 @@ const auth = (...requireRoles: TUserRoles[]) => {
 
         const user = await User.isUserExistByEmail(decode.userEmail);
         if (!user) {
-            throw new AppError(401, "Invalid User!");
+            throw new AppError(401, "Invalid credentials");
         }
         if (user?.isBlocked) {
             throw new AppError(401, "This user is Blocked");

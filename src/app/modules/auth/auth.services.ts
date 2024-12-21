@@ -8,14 +8,14 @@ import config from "../../../config";
 const loginUser = async (payload: TLogin) => {
     const user = await User.isUserExistByEmail(payload.email);
     if (!user) {
-        throw new AppError(400, "Invalid Email or Password.");
+        throw new AppError(400, "Invalid credentials");
     }
     if (user.isBlocked) {
         throw new AppError(400, "You are Blocked");
     }
     const isPasswordMatched = await compare(payload.password, user.password);
     if (!isPasswordMatched) {
-        throw new AppError(400, "Wrong password");
+        throw new AppError(400, "Invalid credentials");
     }
 
     const jwtPayload = {

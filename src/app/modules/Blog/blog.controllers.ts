@@ -8,7 +8,7 @@ import { BlogServices } from "./blog.services";
 const createBlog = catchAsync(async (req, res) => {
     const user = await User.isUserExistByEmail(req.user.userEmail);
     if (!user) {
-        throw new AppError(401, "Invalid User!");
+        throw new AppError(401, "Invalid credentials",);
     }
     const payload = req.body;
     payload.author = user?._id;
@@ -31,12 +31,12 @@ const updateBlog = catchAsync(async (req, res) => {
     const user = await User.isUserExistByEmail(req.user.userEmail);
 
     if (!user) {
-        throw new AppError(401, "Invalid User!");
+        throw new AppError(401, "Invalid credentials");
     }
     const blog = await Blog.findById(req.params.id).populate("author");
 
     if (blog?.author?.email != user?.email) {
-        throw new AppError(401, "Invalid User!");
+        throw new AppError(401, "You are not authorized.");
     }
     const result = await BlogServices.updateBlogIntoDB(req.params.id, req.body);
 
@@ -57,12 +57,12 @@ const deleteBlog = catchAsync(async (req, res) => {
     const user = await User.isUserExistByEmail(req.user.userEmail);
 
     if (!user) {
-        throw new AppError(401, "Invalid User!");
+        throw new AppError(401, "Invalid credentials");
     }
     const blog = await Blog.findById(req.params.id).populate("author");
 
     if (blog?.author?.email != user?.email) {
-        throw new AppError(401, "Invalid User!");
+        throw new AppError(401, "Invalid credentials");
     }
     await BlogServices.deleteBlogFromDB(req.params.id);
 

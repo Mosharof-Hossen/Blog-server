@@ -14,6 +14,10 @@ const blogModelSchema = new Schema<TBlog>({
     timestamps: true
 })
 
+blogModelSchema.pre("find", async function (next) {
+    this.find({ isPublished: true });
+    next()
+})
 
 
 export const Blog = model<TBlog>("Blog", blogModelSchema)
