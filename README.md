@@ -21,21 +21,45 @@ The goal of this Blogify-server is to develop a backend for a blogging platform 
 ### **1. Authentication & Authorization**
 - **Secure Authentication**: User registration and login using JWT (JSON Web Token).
 - **Role-Based Access Control (RBAC)**:
-  - **Admin**: Manage users and their blogs.
-  - **User**: Perform CRUD operations on their own blogs.
+  - **Admin**: Manage users and their blogs. (only when logged in)
+  - **User**: Perform CRUD operations on their own blogs. (only when logged in)
 
 ### **2. Blog Management**
 - **For Users( Private Features )**:
-  - Users can create, update, and delete their own blogs.
+  - Users can create, update, and delete their own blogs.  (only when logged in)
 - **Public Features**:
   - View blogs with search, sorting, and filtering capabilities.
 
 ### **3. Admin Panel**
-- Manage users:
-  - Can block any user by updating a property `isBlocked`
-- Manage blogs:
+- Manage users:  (only when logged in)
+  - Can block any user by updating a property `isBlocked` 
+- Manage blogs:  (only when logged in)
   - Can delete any blog.
   - Cannot update any blog.
 
 ---
+
+
+## Models
+
+**User Model:**
+
+*   `name`: string.
+*   `email`: string.
+*   `password`: string. (Hashed password)
+*   `role`: "admin" | "user". Default is "user".
+*   `isBlocked`: boolean. Default is false.
+*   `createdAt`: Date – The timestamp when the user was created.
+*   `updatedAt`: Date – The timestamp of the last update to the user.
+
+**Blog Model:**
+
+*   `title`: string.
+*   `content`: string.
+*   `author`: ObjectId – A reference to the `User` model.
+*   `isPublished`: boolean. Default is true (published).
+*   `createdAt`: Date – The timestamp when the blog post was created.
+*   `updatedAt`: Date – The timestamp of the last update to the blog post.
+
+##   
 
