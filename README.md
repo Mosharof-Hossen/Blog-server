@@ -25,17 +25,17 @@ The goal of this Blogify-server is to develop a backend for a blogging platform 
   - **User**: Perform CRUD operations on their own blogs.
 
 ### **2. Blog Management**
-- **Private Features**:
+- **For Users( Private Features )**:
   - Users can create, update, and delete their own blogs.
 - **Public Features**:
-  - View blogs with pagination, search, sorting, and filtering capabilities.
+  - View blogs with search, sorting, and filtering capabilities.
 
 ### **3. Admin Panel**
 - Manage users:
-  - View all users.
-  - Delete users.
+  - Can block any user by updating a property `isBlocked`
 - Manage blogs:
-  - Delete any blog.
+  - Can delete any blog.
+  - Cannot update any blog.
 
 ---
 
